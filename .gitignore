@@ -1,0 +1,17 @@
+# Ignore the .env file
+.env
+
+# Ignore the grafana/data folder
+grafana/data/
+
+# Ignore the entire loki folder except loki/config
+loki/
+!loki/config/
+
+# Ignore the entire prometheus folder except prometheus/prometheus.yml
+prometheus/*
+!prometheus/prometheus.yml
+
+# Ignore the entire promtail folder except promtail/config
+promtail/*
+!promtail/config/
