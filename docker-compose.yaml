@@ -20,15 +20,15 @@ services:
     user: "${UID}:${GID}"
     restart: unless-stopped
 
-  cadvisor:
-    image: google/cadvisor:latest
-    container_name: cadvisor
-    restart: unless-stopped
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker:/var/lib/docker:ro
+  # cadvisor:
+  #   image: google/cadvisor:latest
+  #   container_name: cadvisor
+  #   restart: unless-stopped
+  #   volumes:
+  #     - /:/rootfs:ro
+  #     - /var/run:/var/run:rw
+  #     - /sys:/sys:ro
+  #     - /var/lib/docker:/var/lib/docker:ro
 
   promtail:
     image: grafana/promtail:latest
@@ -79,13 +79,14 @@ services:
     #   - 3333:3000
     volumes:
       - ${VOLUME_DIR}/grafana/data:/var/lib/grafana
-      - ./grafana/config:/etc/grafana
+      # - ./grafana/config:/etc/grafana
       # - ./grafana/lib:/var/lib/grafana
-      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      # - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
     user: "${UID}:${GID}"
     environment:
       # - GF_INSTALL_PLUGINS=grafana-loki-datasource
+      - GF_SERVER_ROOT_URL=https://monitor.markklass.dev
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=password
     restart: unless-stopped
