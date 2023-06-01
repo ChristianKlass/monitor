@@ -1,0 +1,48 @@
+apiVersion: 1
+
+providers:
+- name: 'Node Exporter Dashboard'
+  orgId: 1
+  folder: ''
+  type: file
+  options:
+    path: /var/lib/grafana/dashboards
+    defaults:
+      homeDashboardId: 1860
+    json: |
+      [
+        {
+          "dashboard": {
+            "id": "1860",
+            "uid": "",
+            "url": "https://grafana.com/dashboards/1860-node-exporter-full",
+            "slug": "1860-node-exporter-full",
+            "name": "Node Exporter Dashboard",
+            "provider": "",
+            "disableDeletion": false,
+            "editable": true,
+            "hideControls": false,
+            "options": {},
+            "refresh": "10s"
+          },
+          "inputs": [],
+          "overwrite": true
+        },
+        {
+          "dashboard": {
+            "id": "14282",
+            "uid": "",
+            "url": "https://grafana.com/dashboards/14282-cadvisor-exporter",
+            "slug": "14282",
+            "name": "Cadvisor Exporter",
+            "provider": "",
+            "disableDeletion": false,
+            "editable": true,
+            "hideControls": false,
+            "options": {},
+            "refresh": "10s"
+          },
+          "inputs": [],
+          "overwrite": true
+        }
+      ]
