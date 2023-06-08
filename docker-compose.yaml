@@ -56,6 +56,16 @@ services:
       - --storage.tsdb.path=/prometheus
     depends_on:
       - node-exporter
+      - cadvisor
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
   
   node-exporter:
     container_name: node-exporter
