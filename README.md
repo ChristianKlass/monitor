@@ -3,18 +3,38 @@
 Simple Docker Compose config for a monitoring & visualization stack with Cloudflared, Loki, cAdvisor, Promtail, Prometheus, Node Exporter & Grafana.
 
 Remember to create all the necessary folders (unless you want to have all these folders as root):
-  - ### Loki 
-    - ./loki/config
-    - ${VOLUME_DIR}/loki/index
-    - ${VOLUME_DIR}/loki/chunks
-    - ${VOLUME_DIR}/loki/wal
-  - ### Promtail
-    - ./promtail/config
-    - ${VOLUME_DIR}/promtail/data
-    - ${VOLUME_DIR}/promtail/log
-  - ### Grafana
-    - ${VOLUME_DIR}/grafana/data
-    - ./grafana/datasources
+```bash
+# Loki 
+mkdir -p ./loki/config
+mkdir -p ${VOLUME_DIR}/loki/index
+mkdir -p ${VOLUME_DIR}/loki/chunks
+mkdir -p ${VOLUME_DIR}/loki/wal
+
+# Promtail
+mkdir -p ./promtail/config
+mkdir -p ${VOLUME_DIR}/promtail/data
+mkdir -p ${VOLUME_DIR}/promtail/log
+
+# Grafana
+mkdir -p ${VOLUME_DIR}/grafana/data
+mkdir -p ./grafana/datasources
+
+# remember to make sure that you set the correct rights
+# Loki
+chown ${PUID}:${PGID} ./loki/config
+chown ${PUID}:${PGID} ${VOLUME_DIR}/loki/index
+chown ${PUID}:${PGID} ${VOLUME_DIR}/loki/chunks
+chown ${PUID}:${PGID} ${VOLUME_DIR}/loki/wal
+
+# Promtail
+chown ${PUID}:${PGID} ./promtail/config
+chown ${PUID}:${PGID} ${VOLUME_DIR}/promtail/data
+chown ${PUID}:${PGID} ${VOLUME_DIR}/promtail/log
+
+# Grafana
+chown ${PUID}:${PGID} ${VOLUME_DIR}/grafana/data
+chown ${PUID}:${PGID} ./grafana/datasources
+```
 ---
 
 Also, I am not sure if it's a good idea, but I sent all the Docker logs to Loki. You can do this by modifying the `/etc/docker/daemon.json` file:
