@@ -2,7 +2,22 @@
 
 Simple Docker Compose config for a monitoring & visualization stack with Cloudflared, Loki, cAdvisor, Promtail, Prometheus, Node Exporter & Grafana.
 
-I am not sure if it's a good idea, but I sent all the Docker logs to Loki. You can do this by modifying the `/etc/docker/daemon.json` file:
+Remember to create all the necessary folders (unless you want to have all these folders as root):
+  - ### Loki 
+    - ./loki/config
+    - ${VOLUME_DIR}/loki/index
+    - ${VOLUME_DIR}/loki/chunks
+    - ${VOLUME_DIR}/loki/wal
+  - ### Promtail
+    - ./promtail/config
+    - ${VOLUME_DIR}/promtail/data
+    - ${VOLUME_DIR}/promtail/log
+  - ### Grafana
+    - ${VOLUME_DIR}/grafana/data
+    - ./grafana/datasources
+---
+
+Also, I am not sure if it's a good idea, but I sent all the Docker logs to Loki. You can do this by modifying the `/etc/docker/daemon.json` file:
 ```json
 {
   "log-driver": "loki",
