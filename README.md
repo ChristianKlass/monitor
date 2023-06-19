@@ -67,3 +67,6 @@ You'll also need to allow only internal traffic to reach Loki, unless you want t
     restart: unless-stopped
 ...
 ```
+
+---
+These are the dashboards I use for this:
