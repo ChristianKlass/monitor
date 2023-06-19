@@ -70,3 +70,8 @@ You'll also need to allow only internal traffic to reach Loki, unless you want t
 
 ---
 These are the dashboards I use for this:
+
+* [Cadvisor Exporter - 14282](https://grafana.com/grafana/dashboards/14282-cadvisor-exporter/)
+* [Node Exporter Full - 1860](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
+
+I didn't make my own because why reinvent the wheel?
